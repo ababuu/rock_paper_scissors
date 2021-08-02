@@ -18,28 +18,28 @@ function playRound(playerSelection, computerSelection){
         return gameResult="You: Paper vs Computer: scissors. You Lose! Scissors beat Paper";
     }
     else if(playerSelection.toLowerCase()==paper && computerSelection==rock){
-        return gameResult="You: Paper vs Computer: Rock.You win! Paper beats Rock";
+        return gameResult="You: Paper vs Computer: Rock. You win! Paper beats Rock";
     }
     else if(playerSelection.toLowerCase()==paper && computerSelection== paper){
-        return gameResult="You: Paper vs Computer: Paper.It's a tie!";
+        return gameResult="You: Paper vs Computer: Paper. It's a tie!";
     }
     else if(playerSelection.toLowerCase()==rock && computerSelection==paper){
-        return gameResult="You: Rock vs Computer: Paper.You lose! Paper beats Rock";
+        return gameResult="You: Rock vs Computer: Paper. You lose! Paper beats Rock";
     }
     else if(playerSelection.toLowerCase()==rock && computerSelection==scissors){
-        return gameResult="You: Rock vs Computer: Scissors.You win! Rock beats Scissors";
+        return gameResult="You: Rock vs Computer: Scissors. You win! Rock beats Scissors";
     }
     else if(playerSelection.toLowerCase()==rock && computerSelection==rock){
-        return gameResult="You: Rock vs Computer: Rock.It's a tie!";
+        return gameResult="You: Rock vs Computer: Rock. It's a tie!";
     }
     else if(playerSelection.toLowerCase()==scissors && computerSelection==paper){
-        return gameResult="You: Scissors vs Computer: Paper.You win! Scissors beat Paper";
+        return gameResult="You: Scissors vs Computer: Paper. You win! Scissors beat Paper";
     }
     else if(playerSelection.toLowerCase()==scissors && computerSelection==rock){
         return gameResult="You: Scissors vs Computer: Rock.You lose! Rock beats Scissors";
     }
     else if(playerSelection.toLowerCase()==scissors && computerSelection==scissors){
-        return gameResult="You: Scissors vs Computer: Scissors.It's a tie!";
+        return gameResult="You: Scissors vs Computer: Scissors. It's a tie!";
     }
 }
 
