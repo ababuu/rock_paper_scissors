@@ -52,6 +52,7 @@ function game(){
     for(let counter=0; counter<=5; counter++){
         let playerInput=prompt("Enter rock, paper or scissors");
         let roundResult=playRound(playerInput, computerPlay());
+        console.log(`Round: ${counter}`);
         if(roundResult.includes(winSubString)){
             playerPoints++;
             console.log(roundResult);
