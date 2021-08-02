@@ -49,7 +49,7 @@ function game(){
     let computerPoints=0;
     const winSubString="win";
     const loseSubString="lose";
-    for(let counter=0; counter<=5; counter++){
+    for(let counter=1; counter<=5; counter++){
         let playerInput=prompt("Enter rock, paper or scissors");
         let roundResult=playRound(playerInput, computerPlay());
         console.log(`Round: ${counter}`);
