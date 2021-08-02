@@ -5,7 +5,6 @@ let scissors="scissors";
 function computerPlay(){
     //generate a random whole number between 1 and 3
     let randNum= Math.floor(Math.random() * (4-1) + 1);
-    console.log(randNum);
     //if randNum=1 return rock, if randNum=2 return paper, if randNum=1 return scissors
     if(randNum===1) return rock;
     else if(randNum===2) return paper;
