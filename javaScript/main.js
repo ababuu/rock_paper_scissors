@@ -1,6 +1,21 @@
 let rock="rock";
 let paper="paper";
 let scissors="scissors";
+let playerPoints=0;
+let computerPoints=0;
+const message = document.querySelector('.message');
+let scorePlayer = document.querySelector('.player-score');
+let scoreComputer = document.querySelector('.computer-score');
+let buttons=Array.from(document.getElementsByTagName('button'));
+
+buttons.forEach((button) =>
+    button.addEventListener('click', () => {
+        if (playerPoints >= 5 || computerPoints >= 5) {
+            return;
+        }
+        game(button.value);
+    })
+);
 
 function computerPlay(){
     //generate a random whole number between 1 and 3
@@ -14,68 +29,70 @@ function computerPlay(){
 
 function playRound(playerSelection, computerSelection){
     let gameResult;
+    
     if(playerSelection.toLowerCase()==paper && computerSelection==scissors){
-        return gameResult="You: Paper vs Computer: scissors. You Lose! Scissors beat Paper";
+        gameResult="You: Paper vs Computer: scissors. You Lose! Scissors beat Paper";
     }
     else if(playerSelection.toLowerCase()==paper && computerSelection==rock){
-        return gameResult="You: Paper vs Computer: Rock. You win! Paper beats Rock";
+        gameResult="You: Paper vs Computer: Rock. You win! Paper beats Rock";
     }
     else if(playerSelection.toLowerCase()==paper && computerSelection== paper){
-        return gameResult="You: Paper vs Computer: Paper. It's a tie!";
+        gameResult="You: Paper vs Computer: Paper. It's a tie!";
     }
     else if(playerSelection.toLowerCase()==rock && computerSelection==paper){
-        return gameResult="You: Rock vs Computer: Paper. You lose! Paper beats Rock";
+        gameResult="You: Rock vs Computer: Paper. You lose! Paper beats Rock";
     }
     else if(playerSelection.toLowerCase()==rock && computerSelection==scissors){
-        return gameResult="You: Rock vs Computer: Scissors. You win! Rock beats Scissors";
+        gameResult="You: Rock vs Computer: Scissors. You win! Rock beats Scissors";
     }
     else if(playerSelection.toLowerCase()==rock && computerSelection==rock){
-        return gameResult="You: Rock vs Computer: Rock. It's a tie!";
+        gameResult="You: Rock vs Computer: Rock. It's a tie!";
     }
     else if(playerSelection.toLowerCase()==scissors && computerSelection==paper){
-        return gameResult="You: Scissors vs Computer: Paper. You win! Scissors beat Paper";
+        gameResult="You: Scissors vs Computer: Paper. You win! Scissors beat Paper";
     }
     else if(playerSelection.toLowerCase()==scissors && computerSelection==rock){
-        return gameResult="You: Scissors vs Computer: Rock.You lose! Rock beats Scissors";
+        gameResult="You: Scissors vs Computer: Rock.You lose! Rock beats Scissors";
     }
     else if(playerSelection.toLowerCase()==scissors && computerSelection==scissors){
-        return gameResult="You: Scissors vs Computer: Scissors. It's a tie!";
+        gameResult="You: Scissors vs Computer: Scissors. It's a tie!";
     }
+
+    return gameResult;
+    
 }
 
 
-function game(){
-    let playerPoints=0;
-    let computerPoints=0;
+
+function game(playerInput){
+    
     const winSubString="win";
     const loseSubString="lose";
-    for(let counter=1; counter<=5; counter++){
-        let playerInput=prompt("Enter rock, paper or scissors");
-        let roundResult=playRound(playerInput, computerPlay());
-        console.log(`Round: ${counter}`);
-        if(roundResult.includes(winSubString)){
-            playerPoints++;
-            console.log(roundResult);
-        }
-        else if(roundResult.includes(loseSubString)){
-            computerPoints++;
-            console.log(roundResult);
-        }
-        else{
-            console.log(roundResult);
-        }
+    let playerSelection=playerInput;
+    let computerSelection=computerPlay();
+    let roundResult=playRound(playerSelection, computerSelection);
 
+    if(roundResult.includes(winSubString)){
+        playerPoints++;
+        
     }
+    else if(roundResult.includes(loseSubString)){
+        computerPoints++;
+        
+    }
+    scorePlayer.textContent = playerPoints;
+    scoreComputer.textContent = computerPoints;
+    message.textContent = roundResult;
 
-    if(playerPoints>computerPoints){
-        console.log(`You Won! Your score: ${playerPoints}, Computer's score: ${computerPoints}`);
+    if(playerPoints>=5 && computerPoints<5){
+        
+        message.textContent='Game over, You Won!';
     }
-    else if(playerPoints < computerPoints){
-        console.log(`You Lost! Your score: ${playerPoints}, Computer's score: ${computerPoints}`);
+    else if(playerPoints<5 && computerPoints>=5){
+        message.textContent="GameOver, You Lost!";
     }
-    else{
-        console.log(`It's a tie! Your score: ${playerPoints}, Computer's score: ${computerPoints}`);
-    }
+    // else if(playerPoints==computerPoints){
+    //     message.textContent="GameOver, It's a tie!";
+    // }
+
 }
-
-game();
